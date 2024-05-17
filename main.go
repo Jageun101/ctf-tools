@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
+	"goctftools/config/cli"
 	"goctftools/config/colors" // Assuming colors package defines color constants
+	"os"
 	"os/exec"
-	"time"
 )
+
 
 var (
     ip string
@@ -21,18 +23,19 @@ func main() {
     fmt.Println("| VERSION : 1.0.0-alpha                            |")
     fmt.Println("+--------------------------------------------------+")
     fmt.Print(color.Reset, "\n")
-	time.Sleep(2 * time.Second)
 
 	exec.Command("clear")
 
-	menu()
+	for{
+		menu()
+	}
 }
 
 func menu(){
 
 		// ? Ask ip
 		if ip == ""{
-			fmt.Print(color.Cyan + "|> Target IP Address: " + color.Magenta)
+			fmt.Print(color.Cyan + "|> Choose a target IP address: " + color.Magenta)
 			fmt.Scan(&ip)
 			fmt.Println(color.Reset)
 		} else{
@@ -41,7 +44,10 @@ func menu(){
 
 		// ? Menu
 		fmt.Println(color.Cyan+ "+=========> GoCTFTools <==============================+", color.Reset)
-		fmt.Println(color.Cyan+ "|> [1] Look at the ports of "+ip)
+		fmt.Println(color.Cyan+ "|> [0] Reset IP"+color.Reset)
+		fmt.Println(color.Cyan+ "|> [1] Look at the ports of "+ip+color.Reset)
+		fmt.Println(color.Cyan+ "|> [2] Folder and file scanning on port @:80"+color.Reset)
+		fmt.Println(color.Cyan+ "|> [99] Exit"+color.Reset)
 		fmt.Println(color.Cyan+ "+=====================================================+\n", color.Reset)
 	
 		// ? Ask menu choice
@@ -51,8 +57,13 @@ func menu(){
 		
 
 		switch action{
+			case 0 :
+				ip = ""
 			case 1 :
-				exec.Command("btop")
+				cli.Nmap(ip)
+			case 2 :
+				cli.Gobuster(ip)
 			default : 
+				os.Exit(0)
 		}
 }

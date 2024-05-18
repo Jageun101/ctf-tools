@@ -33,6 +33,8 @@ func main() {
 
 func menu(){
 
+	
+
 		// ? Ask ip
 		if ip == ""{
 			fmt.Print(color.Cyan + "|> Choose a target IP address: " + color.Magenta)
@@ -46,7 +48,7 @@ func menu(){
 		fmt.Println(color.Cyan+ "+=========> GoCTFTools <==============================+", color.Reset)
 		fmt.Println(color.Cyan+ "|> [0] Reset IP"+color.Reset)
 		fmt.Println(color.Cyan+ "|> [1] Look at the ports of "+ip+color.Reset)
-		fmt.Println(color.Cyan+ "|> [2] Folder and file scanning on port @:80"+color.Reset)
+		fmt.Println(color.Cyan+ "|> [2] Folder and file scanning on port "+ip+":80"+color.Reset)
 		fmt.Println(color.Cyan+ "|> [99] Exit"+color.Reset)
 		fmt.Println(color.Cyan+ "+=====================================================+\n", color.Reset)
 	

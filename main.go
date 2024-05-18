@@ -20,7 +20,7 @@ func main() {
     fmt.Println("| GoCTFTools                                       |")
     fmt.Println("| By Jageun101                                     |")
     fmt.Println("| GITHUB : https://github.com/Jageun101/ctf-tools  |")
-    fmt.Println("| VERSION : 1.0.0-alpha                            |")
+    fmt.Println("| VERSION : 1.0.3-alpha                            |")
     fmt.Println("+--------------------------------------------------+")
     fmt.Print(color.Reset, "\n")
 
@@ -33,7 +33,7 @@ func main() {
 
 func menu(){
 
-	
+
 
 		// ? Ask ip
 		if ip == ""{
@@ -49,6 +49,7 @@ func menu(){
 		fmt.Println(color.Cyan+ "|> [0] Reset IP"+color.Reset)
 		fmt.Println(color.Cyan+ "|> [1] Look at the ports of "+ip+color.Reset)
 		fmt.Println(color.Cyan+ "|> [2] Folder and file scanning on port "+ip+":80"+color.Reset)
+		fmt.Println(color.Cyan+ "|> [3] BruteForce Attack"+color.Reset)
 		fmt.Println(color.Cyan+ "|> [99] Exit"+color.Reset)
 		fmt.Println(color.Cyan+ "+=====================================================+\n", color.Reset)
 	
@@ -65,6 +66,8 @@ func menu(){
 				cli.Nmap(ip)
 			case 2 :
 				cli.Gobuster(ip)
+			case 3 :
+				cli.Hydra(ip)
 			default : 
 				os.Exit(0)
 		}
